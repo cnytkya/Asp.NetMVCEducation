@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity; // EF kütüphanesini dahil ediyoruz
 
 namespace Asp.NetMVCEducation.NETFramework.Models
 {
@@ -10,6 +6,6 @@ namespace Asp.NetMVCEducation.NETFramework.Models
     {
         public DbSet<Product> Products { get; set; } // Veritabanı tablolarımızı temsil edecek classlarımızı dbset olarak tanımlıyoruz
         public DbSet<Category> Categories { get; set; }
-        
+        public DbSet<User> Users { get; set; }
     }
 }

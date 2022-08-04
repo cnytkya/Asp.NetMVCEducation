@@ -1,14 +1,12 @@
 ﻿using Asp.NetMVCEducation.NETFramework.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Asp.NetMVCEducation.NETFramework.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
+        [Authorize] // Bu controller daki tüm actionlara oturum açmayı zorunlu kıl
         DatabaseContext context = new DatabaseContext();
         // GET: Admin/Categories
         public ActionResult Index()
