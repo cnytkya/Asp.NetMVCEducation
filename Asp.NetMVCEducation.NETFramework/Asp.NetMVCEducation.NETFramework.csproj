@@ -120,6 +120,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Mvc01RazorSyntaxControllerController.cs" />
     <Compile Include="Controllers\Mvc02HtmlHelpersControllerController.cs" />
@@ -275,6 +276,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Users\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
