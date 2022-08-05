@@ -1,17 +1,21 @@
-﻿using System;
+﻿using Asp.NetMVCEducation.NETFramework.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Asp.NetMVCEducation.NETFramework.Areas.Admin.Controllers
-{
+{ 
+    [Authorize]
     public class UsersController : Controller
     {
+       
+        DatabaseContext context = new DatabaseContext();
         // GET: Admin/Users
         public ActionResult Index()
         {
-            return View();
+            return View(context.Users.ToList());
         }
 
         // GET: Admin/Users/Details/5
@@ -28,40 +32,47 @@ namespace Asp.NetMVCEducation.NETFramework.Areas.Admin.Controllers
 
         // POST: Admin/Users/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                context.Users.Add(user);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Hata oluşru!");
             }
+            return View();
         }
 
         // GET: Admin/Users/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(context.Users.Find(id));
         }
 
         // POST: Admin/Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, User user)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                try
+                {
+                    // TODO: Add update logic here
+                    context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Admin/Users/Delete/5

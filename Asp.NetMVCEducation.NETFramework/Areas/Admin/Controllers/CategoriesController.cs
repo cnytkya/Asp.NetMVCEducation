@@ -4,9 +4,10 @@ using System.Web.Mvc;
 
 namespace Asp.NetMVCEducation.NETFramework.Areas.Admin.Controllers
 {
+    [Authorize] // Bu controller daki tüm actionlara oturum açmayı zorunlu kıl
     public class CategoriesController : Controller
     {
-        [Authorize] // Bu controller daki tüm actionlara oturum açmayı zorunlu kıl
+       
         DatabaseContext context = new DatabaseContext();
         // GET: Admin/Categories
         public ActionResult Index()
