@@ -99,20 +99,21 @@ namespace Asp.NetMVCEducation.NETFramework.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Delete/5
+
+        // GET: Admin/Users/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(context.Products.Find(id));
+            return View(context.Users.Find(id));
         }
 
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/Users/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Product product)
+        public ActionResult Delete(int id, User user)
         {
             try
             {
                 // TODO: Add delete logic here
-                context.Entry(product).State = EntityState.Deleted;
+                context.Entry(user).State = System.Data.Entity.EntityState.Deleted;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
